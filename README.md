@@ -54,6 +54,7 @@ sudo apt upgrade
 sudo nmtui
 ```
 `nmtui` aracını kullanarak, "Activate a connection" seçeneğini belirleyin ve Wi-Fi ağınızı seçin. Şifreyi girin ve bağlantıyı etkinleştirin.
+
 5. Gerekli dil ve bölge ayarlarını yapılandırın:
 
 ```bash
