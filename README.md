@@ -95,7 +95,7 @@ sudo orangepi-config
 ![IMG_8985](https://user-images.githubusercontent.com/120671243/234845434-ac1a636b-f81a-4c56-8975-c3a9f99f368b.jpg)
 
 ```bash
-sudo power off
+sudo poweroff
 ```
 
 9. Artık NVME M.2 SSD ile sistemi boot edebiliriz, SD kartı çıkarıp M.2 slotuna SSD'yi takıp Orange Pi 5'i başlatabiliriz .
