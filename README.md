@@ -78,7 +78,7 @@ Bu noktada, Ubuntu Server kurulumunuz tamamlanmış olmalıdır. Sistem yeniden 
 - Sadece SSD ile kurulum yapılamıyor önce SD karta imaj'ı yazdırıp daha sonra gerekli ayarları yaptıktan sonra SSD üzerinden boot edilebiliyor !!
 - NVME M.2 SSD olarak 2230-2243 modelleri tercih ediliyor fakat 2280'ide kullanabilirsiniz
 
-1.YOL
+### 1.Yol
 
 1. Yukarıda Adım 2'de yaptığımız işlemleri SSD için yapacağız, imaj seçip "Select Target" düğmesine tıklayarak SSD'mizi seçiyoruz.
 2. Orange Pi 5'inizi kapatın ve güç kaynağını çıkarın.
@@ -104,12 +104,7 @@ sudo poweroff
 9. Artık NVME M.2 SSD ile sistemi boot edebiliriz, SD kartı çıkarıp M.2 slotuna SSD'yi takıp Orange Pi 5'i başlatabiliriz .
 
 
-
-
-
-
-
-2.YOL (SSH ile Bağlantı)
+### 2.Yol (SSH ile Bağlantı)
 
 1. Orange Pi 5'inizi kapatın ve güç kaynağını çıkarın.
 2. NVMe M.2 SSD'yi Orange Pi 5'in M.2 yuvasına takın ve gerektiğinde vidaları kullanarak (2230-2243 için) güvenli bir şekilde sabitleyin.
@@ -117,13 +112,13 @@ sudo poweroff
 4. Bilgisayarınızdan imaj dosyasının bulunduğu klasöre giderek imajı Orange Pi 5'e kopyalayalım.
 
 ```bash
-scp Orangepi5_1.1.4_ubuntu_focal_server_linux5.10.110.img root@192.168.1.105:/home/orangepi
+scp Orangepi5_1.1.4_ubuntu_focal_server_linux5.10.110.img root@<your_ip>:/home/orangepi
 ```
 
 5. Kopyalama işlemi bittikten sonra Orange Pi 5'e SSH ile bağlanalım.
 
 ```bash
-ssh root@192.168.1.105
+ssh root@<your_ip>
 ```
 
 6. Terminalden aşağıdaki komutları girin:
@@ -156,5 +151,3 @@ sudo dd bs=1M if=Orangepi5_1.1.4_ubuntu_focal_server_linux5.10.110.img of=/dev/n
 ```
 shutdown -h now
 ```
-
-
