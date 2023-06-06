@@ -78,6 +78,8 @@ Bu noktada, Ubuntu Server kurulumunuz tamamlanmış olmalıdır. Sistem yeniden 
 - Sadece SSD ile kurulum yapılamıyor önce SD karta imaj'ı yazdırıp daha sonra gerekli ayarları yaptıktan sonra SSD üzerinden boot edilebiliyor !!
 - NVME M.2 SSD olarak 2230-2243 modelleri tercih ediliyor fakat 2280'ide kullanabilirsiniz
 
+1.YOL
+
 1. Yukarıda Adım 2'de yaptığımız işlemleri SSD için yapacağız, imaj seçip "Select Target" düğmesine tıklayarak SSD'mizi seçiyoruz.
 2. Orange Pi 5'inizi kapatın ve güç kaynağını çıkarın.
 3. NVMe M.2 SSD'yi Orange Pi 5'in M.2 yuvasına takın ve gerektiğinde vidaları kullanarak (2230-2243 için) güvenli bir şekilde sabitleyin.
@@ -100,3 +102,59 @@ sudo poweroff
 ```
 
 9. Artık NVME M.2 SSD ile sistemi boot edebiliriz, SD kartı çıkarıp M.2 slotuna SSD'yi takıp Orange Pi 5'i başlatabiliriz .
+
+
+
+
+
+
+
+2.YOL (SSH ile Bağlantı)
+
+1. Orange Pi 5'inizi kapatın ve güç kaynağını çıkarın.
+2. NVMe M.2 SSD'yi Orange Pi 5'in M.2 yuvasına takın ve gerektiğinde vidaları kullanarak (2230-2243 için) güvenli bir şekilde sabitleyin.
+3. Orange Pi 5'i tekrar güç kaynağına bağlayarak cihazı açın.
+4. Bilgisayarınızdan imaj dosyasının bulunduğu klasöre giderek imajı Orange Pi 5'e kopyalayalım.
+
+```bash
+scp Orangepi5_1.1.4_ubuntu_focal_server_linux5.10.110.img root@192.168.1.105:/home/orangepi
+```
+
+5. Kopyalama işlemi bittikten sonra Orange Pi 5'e SSH ile bağlanalım.
+
+```bash
+ssh root@192.168.1.105
+```
+
+6. Terminalden aşağıdaki komutları girin:
+```bash
+sudo orangepi-config
+```
+6. Açılan ekranda en üst seçenekteki `System`'e giriyoruz.
+![IMG_8983](https://user-images.githubusercontent.com/120671243/234844961-f09f5fb4-da09-4ec1-91f2-3693362cf1cb.jpg)
+
+7. Daha sonra yine en üstteki seçenek olan `Install`'e giriyoruz. 
+![IMG_8984](https://user-images.githubusercontent.com/120671243/234845083-bffbaa12-e863-4e35-a217-15d7d094d04e.jpg)
+
+8. Çıkan ekranda `Install/Update the bootloade on SPI Flash`'ı okeyliyoruz, yaklaşık 5-10dk sonra kurulum tamamlanacaktır, bu noktada tekrar terminal'e geri dönebiliriz.
+
+9. Aşağıdaki komutla imaj dosyasını kopyaladığımız klasöre gidelim:
+
+```bash
+cd /home/orangepi
+```
+
+10. İmaj dosyasını SSD diskimize yüklüyelim:
+
+```bash
+sudo dd bs=1M if=Orangepi5_1.1.4_ubuntu_focal_server_linux5.10.110.img of=/dev/nvme0n1 status=progress
+```
+
+11. Aşağıdaki komutla sistemi kapatıp sd kartımızı çıkaralım. Yeniden başlattığımızda cihamıza SSD'den başlayacak. Modem arayüzünden cihazımızın yeni IP'sinin öğrenebilirsiniz.
+
+
+```
+shutdown -h now
+```
+
+
